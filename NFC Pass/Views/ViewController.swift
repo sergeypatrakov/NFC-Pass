@@ -26,6 +26,7 @@ class ViewController: UIViewController {
         configurateImage()
         configarateText()
         configurateButton()
+        buttonMain()
     }
     
     private func configurateLogo() {
@@ -78,11 +79,23 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func configurateButton() {
-        view.addSubview(button)
+    private func buttonMain() {
         button.setTitle("Войти в систему", for: .normal)
         button.backgroundColor = UIColor.white
         button.setTitleColor(UIColor.accent, for: .normal)
+        button.addTarget(self, action: #selector(pushButtonAction), for: .touchUpInside)
+    }
+    
+    @objc func pushButtonAction() {
+        let controller = MainDefaultViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+}
+
+extension ViewController {
+    func configurateButton() {
+        view.addSubview(button)
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -91,7 +104,5 @@ class ViewController: UIViewController {
             button.widthAnchor.constraint(equalToConstant: 350),
             button.heightAnchor.constraint(equalToConstant: 55)
         ])
-        
     }
 }
-
