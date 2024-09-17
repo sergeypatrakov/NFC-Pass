@@ -13,18 +13,19 @@ class MainDefaultViewController: UIViewController {
     private lazy var settings = UIImageView()
     private lazy var label = UILabel()
     private lazy var keyLocked = UIImageView()
-    private lazy var circleShade1 = UIView()
-    private lazy var circleShade2 = UIView()
-    private lazy var circleShade3 = UIView()
-    private lazy var circleWhite1 = UIView()
-    private lazy var circleWhite2 = UIView()
-    private lazy var circleWhite3 = UIView()
+    private lazy var circleShadeBig = UIView()
+    private lazy var circleShadeMedium = UIView()
+    private lazy var circleShadeSmall = UIView()
+    private lazy var circleWhiteBig = UIView()
+    private lazy var circleWhiteMedium = UIView()
+    private lazy var circleWhiteSmall = UIView()
+    private lazy var text = UILabel()
     lazy var button = UIButton()
     
-//    override func viewWillAppear(_ animated: Bool) { // delete "Back" button
-//         super.viewWillAppear(animated)
-//         navigationItem.hidesBackButton = true
-//     }
+    override func viewWillAppear(_ animated: Bool) { // delete "Back" button
+         super.viewWillAppear(animated)
+         navigationItem.hidesBackButton = true
+     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,66 +36,68 @@ class MainDefaultViewController: UIViewController {
     private func setupLayout() {
         configurateLogo()
         configurateSettings()
-        configurateLabel()
         configurateCircles()
         configurateKeyLocked()
+        configurateText()
         configurateButton()
         buttonDefault()
     }
     
     private func configurateCircles() {
-//        circleShade1 = createShadeCirclesView()
-//        circleShade2 = createShadeCirclesView()
-        circleShade3 = createShadeCirclesView()
-//        circleShade1.layer.cornerRadius = 130
-//        circleShade2.layer.cornerRadius = 104
-        circleShade3.layer.cornerRadius = 78
-        view.addSubview(circleShade3)
-//        view.addSubview(circleShade2)
-//        view.addSubview(circleShade1)
+        circleShadeBig = createShadeCirclesView()
+        circleShadeBig.layer.cornerRadius = 130
+        view.addSubview(circleShadeBig)
+        
+        circleWhiteBig = createWhiteCirclesView()
+        circleWhiteBig.layer.cornerRadius = 117
+        view.addSubview(circleWhiteBig)
+        
+        circleShadeMedium = createShadeCirclesView()
+        circleShadeMedium.layer.cornerRadius = 104
+        view.addSubview(circleShadeMedium)
+        
+        circleWhiteMedium = createWhiteCirclesView()
+        circleWhiteMedium.layer.cornerRadius = 91
+        view.addSubview(circleWhiteMedium)
+        
+        circleShadeSmall = createShadeCirclesView()
+        circleShadeSmall.layer.cornerRadius = 78
+        view.addSubview(circleShadeSmall)
+        
+        circleWhiteSmall = createWhiteCirclesView()
+        circleWhiteSmall.layer.cornerRadius = 65
+        view.addSubview(circleWhiteSmall)
         
         NSLayoutConstraint.activate([
-//            circleShade1.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-//            circleShade1.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            circleShade1.widthAnchor.constraint(equalToConstant: 260),
-//            circleShade1.heightAnchor.constraint(equalTo: circleShade1.widthAnchor),
+            circleShadeBig.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            circleShadeBig.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circleShadeBig.widthAnchor.constraint(equalToConstant: 260),
+            circleShadeBig.heightAnchor.constraint(equalTo: circleShadeBig.widthAnchor),
             
-//            circleShade2.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-//            circleShade2.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            circleShade2.widthAnchor.constraint(equalToConstant: 208),
-//            circleShade2.heightAnchor.constraint(equalTo: circleShade2.widthAnchor),
+            circleShadeMedium.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            circleShadeMedium.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circleShadeMedium.widthAnchor.constraint(equalToConstant: 208),
+            circleShadeMedium.heightAnchor.constraint(equalTo: circleShadeMedium.widthAnchor),
             
-            circleShade3.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            circleShade3.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            circleShade3.widthAnchor.constraint(equalToConstant: 156),
-            circleShade3.heightAnchor.constraint(equalTo: circleShade3.widthAnchor),
-        ])
-        
-//        circleWhite1 = createWhiteCirclesView()
-//        circleWhite2 = createWhiteCirclesView()
-        circleWhite3 = createWhiteCirclesView()
-//        circleWhite1.layer.cornerRadius = 117
-//        circleWhite2.layer.cornerRadius = 91
-        circleWhite3.layer.cornerRadius = 65
-        view.addSubview(circleWhite3)
-//        view.addSubview(circleWhite2)
-//        view.addSubview(circleWhite1)
-        
-        NSLayoutConstraint.activate([
-//            circleWhite1.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-//            circleWhite1.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            circleWhite1.widthAnchor.constraint(equalToConstant: 234),
-//            circleWhite1.heightAnchor.constraint(equalTo: circleWhite1.widthAnchor),
-//            
-//            circleWhite2.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-//            circleWhite2.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            circleWhite2.widthAnchor.constraint(equalToConstant: 182),
-//            circleWhite2.heightAnchor.constraint(equalTo: circleWhite2.widthAnchor),
+            circleShadeSmall.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            circleShadeSmall.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circleShadeSmall.widthAnchor.constraint(equalToConstant: 156),
+            circleShadeSmall.heightAnchor.constraint(equalTo: circleShadeSmall.widthAnchor),
+
+            circleWhiteBig.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            circleWhiteBig.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circleWhiteBig.widthAnchor.constraint(equalToConstant: 234),
+            circleWhiteBig.heightAnchor.constraint(equalTo: circleWhiteBig.widthAnchor),
             
-            circleWhite3.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            circleWhite3.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            circleWhite3.widthAnchor.constraint(equalToConstant: 130),
-            circleWhite3.heightAnchor.constraint(equalTo: circleWhite3.widthAnchor),
+            circleWhiteMedium.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            circleWhiteMedium.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circleWhiteMedium.widthAnchor.constraint(equalToConstant: 182),
+            circleWhiteMedium.heightAnchor.constraint(equalTo: circleWhiteMedium.widthAnchor),
+            
+            circleWhiteSmall.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            circleWhiteSmall.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            circleWhiteSmall.widthAnchor.constraint(equalToConstant: 130),
+            circleWhiteSmall.heightAnchor.constraint(equalTo: circleWhiteSmall.widthAnchor),
         ])
     }
     
@@ -124,7 +127,14 @@ class MainDefaultViewController: UIViewController {
         ])
     }
     
-    private func configurateLabel() {
+    private func configurateText() {
+        view.addSubview(text)
+        text.text = "NFC: выключен"
+        text.textColor = UIColor.shade3
+        text.font = .systemFont(ofSize: 16)
+        text.textAlignment = .center
+        text.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         let attributedString = NSMutableAttributedString()
@@ -141,6 +151,11 @@ class MainDefaultViewController: UIViewController {
         label.font = .systemFont(ofSize: 20)
         
         NSLayoutConstraint.activate([
+            text.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            text.topAnchor.constraint(equalTo: circleShadeBig.bottomAnchor, constant: 15),
+            text.widthAnchor.constraint(equalToConstant: 120),
+            text.heightAnchor.constraint(equalToConstant: 22),
+            
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.topAnchor.constraint(equalTo: view.topAnchor, constant: 62),
             label.widthAnchor.constraint(equalToConstant: 146),
