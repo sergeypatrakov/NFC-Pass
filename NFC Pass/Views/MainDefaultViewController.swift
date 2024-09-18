@@ -134,8 +134,8 @@ class MainDefaultViewController: UIViewController {
     private func configurateText() {
         view.addSubview(text)
         text.text = "NFC: выключен"
+        text.font = UIFont(name: "ALSSirius-Regular", size: 16)
         text.textColor = UIColor.shade3
-        text.font = .systemFont(ofSize: 16)
         text.textAlignment = .center
         text.translatesAutoresizingMaskIntoConstraints = false
         
@@ -152,7 +152,7 @@ class MainDefaultViewController: UIViewController {
         attributedString.append(propuskString)
         
         label.attributedText = attributedString
-        label.font = .systemFont(ofSize: 20)
+        label.font = UIFont(name: "ALSSirius-Bold", size: 20)
         
         NSLayoutConstraint.activate([
             text.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -189,6 +189,9 @@ class MainDefaultViewController: UIViewController {
     
     private func buttonCancelled() {
         cancelButton.setTitle("Отмена", for: .normal)
+        if let alsSiriusBold = UIFont(name: "ALSSirius-Bold", size: 16) {
+            cancelButton.titleLabel?.font = alsSiriusBold
+        } else { print("Font is not exists") }
         view.addSubview(cancelButton)
         cancelButton.layer.cornerRadius = 20
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
@@ -240,6 +243,11 @@ extension MainDefaultViewController {
     func configurateButton() {
         view.addSubview(button)
         button.layer.cornerRadius = 20
+        if let alsSiriusBold = UIFont(name: "ALSSirius-Bold", size: 16) {
+            button.titleLabel?.font = alsSiriusBold
+        } else {
+            print("Font is not exists")
+        }
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
