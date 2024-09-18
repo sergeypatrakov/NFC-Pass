@@ -12,15 +12,18 @@ class MainDefaultViewController: UIViewController {
     private lazy var logo = UIImageView()
     private lazy var settings = UIImageView()
     private lazy var label = UILabel()
-    private lazy var keyLocked = UIImageView()
+    private lazy var keyImage = UIImageView()
+    private lazy var text = UILabel()
+    
     private lazy var circleShadeBig = UIView()
     private lazy var circleShadeMedium = UIView()
     private lazy var circleShadeSmall = UIView()
     private lazy var circleWhiteBig = UIView()
     private lazy var circleWhiteMedium = UIView()
     private lazy var circleWhiteSmall = UIView()
-    private lazy var text = UILabel()
-    lazy var button = UIButton()
+    
+    private lazy var cancelButton = UIButton()
+    private lazy var button = UIButton()
     
     override func viewWillAppear(_ animated: Bool) { // delete "Back" button
          super.viewWillAppear(animated)
@@ -37,10 +40,11 @@ class MainDefaultViewController: UIViewController {
         configurateLogo()
         configurateSettings()
         configurateCircles()
-        configurateKeyLocked()
+        configuratekeyImage()
         configurateText()
         configurateButton()
         buttonDefault()
+        buttonCancelled()
     }
     
     private func configurateCircles() {
@@ -49,7 +53,7 @@ class MainDefaultViewController: UIViewController {
         view.addSubview(circleShadeBig)
         
         circleWhiteBig = createWhiteCirclesView()
-        circleWhiteBig.layer.cornerRadius = 117
+        circleWhiteBig.layer.cornerRadius = 112
         view.addSubview(circleWhiteBig)
         
         circleShadeMedium = createShadeCirclesView()
@@ -57,7 +61,7 @@ class MainDefaultViewController: UIViewController {
         view.addSubview(circleShadeMedium)
         
         circleWhiteMedium = createWhiteCirclesView()
-        circleWhiteMedium.layer.cornerRadius = 91
+        circleWhiteMedium.layer.cornerRadius = 86
         view.addSubview(circleWhiteMedium)
         
         circleShadeSmall = createShadeCirclesView()
@@ -65,7 +69,7 @@ class MainDefaultViewController: UIViewController {
         view.addSubview(circleShadeSmall)
         
         circleWhiteSmall = createWhiteCirclesView()
-        circleWhiteSmall.layer.cornerRadius = 65
+        circleWhiteSmall.layer.cornerRadius = 60
         view.addSubview(circleWhiteSmall)
         
         NSLayoutConstraint.activate([
@@ -86,17 +90,17 @@ class MainDefaultViewController: UIViewController {
 
             circleWhiteBig.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             circleWhiteBig.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            circleWhiteBig.widthAnchor.constraint(equalToConstant: 234),
+            circleWhiteBig.widthAnchor.constraint(equalToConstant: 224),
             circleWhiteBig.heightAnchor.constraint(equalTo: circleWhiteBig.widthAnchor),
             
             circleWhiteMedium.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             circleWhiteMedium.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            circleWhiteMedium.widthAnchor.constraint(equalToConstant: 182),
+            circleWhiteMedium.widthAnchor.constraint(equalToConstant: 172),
             circleWhiteMedium.heightAnchor.constraint(equalTo: circleWhiteMedium.widthAnchor),
             
             circleWhiteSmall.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
             circleWhiteSmall.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            circleWhiteSmall.widthAnchor.constraint(equalToConstant: 130),
+            circleWhiteSmall.widthAnchor.constraint(equalToConstant: 120),
             circleWhiteSmall.heightAnchor.constraint(equalTo: circleWhiteSmall.widthAnchor),
         ])
     }
@@ -163,16 +167,16 @@ class MainDefaultViewController: UIViewController {
         ])
     }
     
-    private func configurateKeyLocked() {
-        view.addSubview(keyLocked)
-        keyLocked.image = UIImage(named: "keyLocked")
-        keyLocked.contentMode = .scaleToFill
-        keyLocked.translatesAutoresizingMaskIntoConstraints = false
+    private func configuratekeyImage() {
+        view.addSubview(keyImage)
+        keyImage.image = UIImage(named: "keyLocked")
+        keyImage.contentMode = .scaleToFill
+        keyImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            keyLocked.widthAnchor.constraint(equalToConstant: 72),
-            keyLocked.heightAnchor.constraint(equalToConstant: 72),
-            keyLocked.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            keyLocked.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            keyImage.widthAnchor.constraint(equalToConstant: 72),
+            keyImage.heightAnchor.constraint(equalToConstant: 72),
+            keyImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            keyImage.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
@@ -180,12 +184,53 @@ class MainDefaultViewController: UIViewController {
         button.setTitle("Активировать пропуск", for: .normal)
         button.backgroundColor = UIColor.accent
         button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(pushButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(activatePass), for: .touchUpInside)
+    }
+    
+    private func buttonCancelled() {
+        cancelButton.setTitle("Отмена", for: .normal)
+        view.addSubview(cancelButton)
+        cancelButton.layer.cornerRadius = 20
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cancelButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cancelButton.widthAnchor.constraint(equalToConstant: 350),
+            cancelButton.heightAnchor.constraint(equalToConstant: 55)
+        ])
+        cancelButton.backgroundColor = UIColor.accentShade
+        cancelButton.setTitleColor(UIColor.black, for: .normal)
+        cancelButton.isHidden = true
+        cancelButton.addTarget(self, action: #selector(deactivatePass), for: .touchUpInside)
     }
 
-    @objc func pushButtonAction() {
-        let controller = MainActiveViewController()
-        navigationController?.pushViewController(controller, animated: true)
+//    @objc func pushButtonAction() {
+//        let controller = MainActiveViewController()
+//        navigationController?.pushViewController(controller, animated: true)
+//    }
+    
+    @objc func activatePass() {
+        text.text = "NFC: включен"
+        keyImage.image = UIImage(named: "keyOpened")
+        
+        cancelButton.isHidden = false
+        button.isHidden = true
+        
+        circleShadeBig.backgroundColor = UIColor.accent
+        circleShadeMedium.backgroundColor = UIColor.accent
+        circleShadeSmall.backgroundColor = UIColor.accent
+    }
+    
+    @objc func deactivatePass() {
+        text.text = "NFC: выключен"
+        keyImage.image = UIImage(named: "keyLocked")
+        
+        button.isHidden = false
+        cancelButton.isHidden = true
+        
+        circleShadeBig.backgroundColor = UIColor.shade2
+        circleShadeMedium.backgroundColor = UIColor.shade2
+        circleShadeSmall.backgroundColor = UIColor.shade2
     }
     
 }
