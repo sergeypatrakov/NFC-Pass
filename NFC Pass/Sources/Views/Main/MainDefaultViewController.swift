@@ -10,7 +10,6 @@ import UIKit
 class MainDefaultViewController: UIViewController {
     
     private lazy var logo = UIImageView()
-    private lazy var settings = UIImageView()
     private lazy var label = UILabel()
     private lazy var keyImage = UIImageView()
     private lazy var text = UILabel()
@@ -24,12 +23,13 @@ class MainDefaultViewController: UIViewController {
     
     private lazy var cancelButton = UIButton()
     private lazy var button = UIButton()
+    private lazy var settings = UIButton()
     
-    override func viewWillAppear(_ animated: Bool) { // delete "Back" button
-         super.viewWillAppear(animated)
-         navigationItem.hidesBackButton = true
-     }
-
+    override func viewWillAppear(_ animated: Bool) { // delete "NavigationBar" button
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -120,14 +120,18 @@ class MainDefaultViewController: UIViewController {
     
     private func configurateSettings() {
         view.addSubview(settings)
-        settings.image = UIImage(named: "settings")
-        settings.contentMode = .scaleToFill
+        if let image = UIImage(named: "settings") {
+            settings.setImage(image, for: .normal)
+        }
+
+        settings.addTarget(self, action: #selector(goToSettingsButton), for: .touchUpInside)
+        
         settings.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             settings.widthAnchor.constraint(equalToConstant: 24),
             settings.heightAnchor.constraint(equalToConstant: 24),
             settings.topAnchor.constraint(equalTo: view.topAnchor, constant: 63),
-            settings.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            settings.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
     }
     
@@ -206,11 +210,11 @@ class MainDefaultViewController: UIViewController {
         cancelButton.isHidden = true
         cancelButton.addTarget(self, action: #selector(deactivatePass), for: .touchUpInside)
     }
-
-//    @objc func pushButtonAction() {
-//        let controller = MainActiveViewController()
-//        navigationController?.pushViewController(controller, animated: true)
-//    }
+    
+    @objc func goToSettingsButton() {
+        let controller = SettingsViewController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
     
     @objc func activatePass() {
         text.text = "NFC: включен"
@@ -271,4 +275,3 @@ extension MainDefaultViewController {
         return circleView
     }
 }
-

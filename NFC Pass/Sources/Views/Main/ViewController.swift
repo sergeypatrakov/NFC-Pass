@@ -99,8 +99,6 @@ extension ViewController {
         button.layer.cornerRadius = 20
         if let alsSiriusBold = UIFont(name: "ALSSirius-Bold", size: 16) {
             button.titleLabel?.font = alsSiriusBold
-        } else {
-            print("Font is not exists")
         }
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
