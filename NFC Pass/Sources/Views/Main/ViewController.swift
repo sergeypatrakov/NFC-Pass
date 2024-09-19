@@ -17,7 +17,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white
+//        view.backgroundColor = UIColor(named: "backgroundColor")
         setupLayout()
     }
     
@@ -34,10 +35,12 @@ class ViewController: UIViewController {
         logo.image = UIImage(named: "tpu_logo")
         logo.contentMode = .scaleToFill
         logo.translatesAutoresizingMaskIntoConstraints = false
-        logo.heightAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
-        logo.widthAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
-        logo.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
-        logo.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            logo.heightAnchor.constraint(equalToConstant: view.frame.height/4),
+            logo.widthAnchor.constraint(equalToConstant: view.frame.height/4),
+            logo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height * 0.05),
+            logo.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
     private func configurateImage() {
