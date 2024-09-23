@@ -16,9 +16,6 @@ class AboutViewController: UIViewController {
     private lazy var textAbout3 = UILabel()
     private lazy var textAbout4 = UILabel()
     private lazy var textAbout5 = UILabel()
-    private lazy var textAbout6 = UILabel()
-    private lazy var textAbout7 = UILabel()
-    private lazy var textAbout8 = UILabel()
     
     private lazy var backButton = UIButton()
     
@@ -50,54 +47,13 @@ class AboutViewController: UIViewController {
     }
     
     private func configurateText() {
-        view.addSubview(contentAbout)
-        contentAbout.addSubview(textAbout1)
-        contentAbout.addSubview(textAbout2)
-        contentAbout.addSubview(textAbout3)
-        contentAbout.addSubview(textAbout4)
-        contentAbout.addSubview(textAbout5)
-        contentAbout.addSubview(textAbout6)
-        contentAbout.addSubview(textAbout7)
-        contentAbout.addSubview(textAbout8)
-        textAbout1.text = "Приложение \"NFC Pass\" - это инновационное решение для эффективного управления доступом и контроля прохода на объекты с использованием технологии NFC (Near Field Communication). Наше приложение предоставляет удобный и безопасный способ управления пропусками с помощью мобильного устройства. "
-        textAbout1.font = UIFont(name: "ALSSirius-Regular", size: 16)
-        textAbout1.numberOfLines = 0
-        textAbout1.textColor = UIColor.black
+        addTextToView()
         
-        textAbout2.text = "Основные функции приложения включают в себя: "
-        textAbout2.font = UIFont(name: "ALSSirius-Bold", size: 20)
-        textAbout2.numberOfLines = 0
-        textAbout2.textColor = UIColor.black
-        
-        textAbout3.text = "1. Аутентификация через NFC"
-        textAbout3.font = UIFont(name: "ALSSirius-Bold", size: 16)
-        textAbout3.numberOfLines = 0
-        textAbout3.textColor = UIColor.black
-        
-        textAbout4.text = "Наше приложение позволяет использовать мобильное устройство в качестве пропуска благодаря технологии NFC. Просто поднесите устройство к считывателю, чтобы получить доступ к объекту.  "
-        textAbout4.font = UIFont(name: "ALSSirius-Regular", size: 16)
-        textAbout4.numberOfLines = 0
-        textAbout4.textColor = UIColor.black
-        
-        textAbout5.text = "2. Многопользовательский доступ"
-        textAbout5.font = UIFont(name: "ALSSirius-Bold", size: 16)
-        textAbout5.numberOfLines = 0
-        textAbout5.textColor = UIColor.black
-        
-        textAbout6.text = "Приложение поддерживает множество пользователей с различными уровнями доступа, что обеспечивает гибкость в управлении системой пропусков для различных групп пользователей.   "
-        textAbout6.font = UIFont(name: "ALSSirius-Regular", size: 16)
-        textAbout6.numberOfLines = 0
-        textAbout6.textColor = UIColor.black
-        
-        textAbout7.text = "3. Безопасность и конфиденциальность"
-        textAbout7.font = UIFont(name: "ALSSirius-Bold", size: 16)
-        textAbout7.numberOfLines = 0
-        textAbout7.textColor = UIColor.black
-        
-        textAbout8.text = "Мы придаем большое значение безопасности данных и обеспечиваем шифрование информации для защиты конфиденциальности пользователей.   Приложение \"NFC Pass\" предоставляет надежное и эффективное решение для организаций, которые стремятся упростить управление доступом и повысить уровень безопасности на своих объектах. Мы гордимся тем, что помогаем нашим клиентам обеспечивать безопасность и комфорт своих сотрудников и посетителей. "
-        textAbout8.font = UIFont(name: "ALSSirius-Regular", size: 16)
-        textAbout8.numberOfLines = 0
-        textAbout8.textColor = UIColor.black
+        configurateAboutText1()
+        configurateAboutText2()
+        configurateAboutText3()
+        configurateAboutText4()
+        configurateAboutText5()
         
         contentAbout.translatesAutoresizingMaskIntoConstraints = false
         textAbout1.translatesAutoresizingMaskIntoConstraints = false
@@ -105,11 +61,67 @@ class AboutViewController: UIViewController {
         textAbout3.translatesAutoresizingMaskIntoConstraints = false
         textAbout4.translatesAutoresizingMaskIntoConstraints = false
         textAbout5.translatesAutoresizingMaskIntoConstraints = false
-        textAbout6.translatesAutoresizingMaskIntoConstraints = false
-        textAbout7.translatesAutoresizingMaskIntoConstraints = false
-        textAbout8.translatesAutoresizingMaskIntoConstraints = false
 
         setupConstraintForText()
+    }
+    
+    private func addTextToView() {
+        view.addSubview(contentAbout)
+        contentAbout.addSubview(textAbout1)
+        contentAbout.addSubview(textAbout2)
+        contentAbout.addSubview(textAbout3)
+        contentAbout.addSubview(textAbout4)
+        contentAbout.addSubview(textAbout5)
+    }
+    
+    private func configurateAboutText1() {
+        textAbout1.text = "Приложение \"NFC Pass\" - это инновационное решение для эффективного управления доступом и контроля прохода на объекты с использованием технологии NFC (Near Field Communication). Наше приложение предоставляет удобный и безопасный способ управления пропусками с помощью мобильного устройства. "
+        textAbout1.font = UIFont(name: "ALSSirius-Regular", size: 16)
+        textAbout1.numberOfLines = 0
+        textAbout1.textColor = UIColor.black
+    }
+    
+    private func configurateAboutText2() {
+        textAbout2.text = "Основные функции приложения включают в себя: "
+        textAbout2.font = UIFont(name: "ALSSirius-Bold", size: 20)
+        textAbout2.numberOfLines = 0
+        textAbout2.textColor = UIColor.black
+    }
+    
+    private func configurateAboutText3() {
+        let titleText1 = "1. Аутентификация через NFC\n"
+        let bodyText1 = "Наше приложение позволяет использовать мобильное устройство в качестве пропуска благодаря технологии NFC. Просто поднесите устройство к считывателю, чтобы получить доступ к объекту.  "
+        
+        let attributedString1 = NSMutableAttributedString(string: titleText1, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 16) ?? 16])
+        attributedString1.append(NSAttributedString(string: bodyText1, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textAbout3.attributedText = attributedString1
+        textAbout3.numberOfLines = 0
+        textAbout3.textColor = UIColor.black
+    }
+    
+    private func configurateAboutText4() {
+        let titleText2 = "2. Многопользовательский доступ\n"
+        let bodyText2 = "Приложение поддерживает множество пользователей с различными уровнями доступа, что обеспечивает гибкость в управлении системой пропусков для различных групп пользователей.  "
+        
+        let attributedString2 = NSMutableAttributedString(string: titleText2, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 16) ?? 16])
+        attributedString2.append(NSAttributedString(string: bodyText2, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textAbout4.attributedText = attributedString2
+        textAbout4.numberOfLines = 0
+        textAbout4.textColor = UIColor.black
+    }
+    
+    private func configurateAboutText5() {
+        let titleText3 = "3. Безопасность и конфиденциальность\n"
+        let bodyText3 = "Мы придаем большое значение безопасности данных и обеспечиваем шифрование информации для защиты конфиденциальности пользователей.   Приложение \"NFC Pass\" предоставляет надежное и эффективное решение для организаций, которые стремятся упростить управление доступом и повысить уровень безопасности на своих объектах. Мы гордимся тем, что помогаем нашим клиентам обеспечивать безопасность и комфорт своих сотрудников и посетителей. "
+        
+        let attributedString3 = NSMutableAttributedString(string: titleText3, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 16) ?? 16])
+        attributedString3.append(NSAttributedString(string: bodyText3, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textAbout5.attributedText = attributedString3
+        textAbout5.numberOfLines = 0
+        textAbout5.textColor = UIColor.black
     }
     
     private func setupConstraintForText() {
@@ -143,22 +155,7 @@ class AboutViewController: UIViewController {
             textAbout5.widthAnchor.constraint(equalTo: contentAbout.widthAnchor),
             textAbout5.leadingAnchor.constraint(equalTo: contentAbout.leadingAnchor),
             textAbout5.trailingAnchor.constraint(equalTo: contentAbout.trailingAnchor),
-            
-            textAbout6.topAnchor.constraint(equalTo: textAbout5.bottomAnchor, constant: 0),
-            textAbout6.widthAnchor.constraint(equalTo: contentAbout.widthAnchor),
-            textAbout6.leadingAnchor.constraint(equalTo: contentAbout.leadingAnchor),
-            textAbout6.trailingAnchor.constraint(equalTo: contentAbout.trailingAnchor),
-            
-            textAbout7.topAnchor.constraint(equalTo: textAbout6.bottomAnchor, constant: 0),
-            textAbout7.widthAnchor.constraint(equalTo: contentAbout.widthAnchor),
-            textAbout7.leadingAnchor.constraint(equalTo: contentAbout.leadingAnchor),
-            textAbout7.trailingAnchor.constraint(equalTo: contentAbout.trailingAnchor),
-            
-            textAbout8.topAnchor.constraint(equalTo: textAbout7.bottomAnchor, constant: 0),
-            textAbout8.widthAnchor.constraint(equalTo: contentAbout.widthAnchor),
-            textAbout8.bottomAnchor.constraint(equalTo: contentAbout.bottomAnchor),
-            textAbout8.leadingAnchor.constraint(equalTo: contentAbout.leadingAnchor),
-            textAbout8.trailingAnchor.constraint(equalTo: contentAbout.trailingAnchor),
+            textAbout5.bottomAnchor.constraint(equalTo: contentAbout.bottomAnchor)
         ])
     }
     
