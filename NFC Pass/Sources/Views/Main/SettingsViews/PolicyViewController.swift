@@ -21,11 +21,6 @@ class PolicyViewController: UIViewController {
     private lazy var textPolicy7 = UILabel()
     private lazy var textPolicy8 = UILabel()
     private lazy var textPolicy9 = UILabel()
-    private lazy var textPolicy10 = UILabel()
-    private lazy var textPolicy11 = UILabel()
-    private lazy var textPolicy12 = UILabel()
-    private lazy var textPolicy13 = UILabel()
-    private lazy var textPolicy14 = UILabel()
 
     private lazy var backButton = UIButton()
     
@@ -86,11 +81,6 @@ class PolicyViewController: UIViewController {
         configurateTextPolicy7()
         configurateTextPolicy8()
         configurateTextPolicy9()
-        configurateTextPolicy10()
-        configurateTextPolicy11()
-        configurateTextPolicy12()
-        configurateTextPolicy13()
-        configurateTextPolicy14()
         
         contentPolicy.translatesAutoresizingMaskIntoConstraints = false
         textPolicy1.translatesAutoresizingMaskIntoConstraints = false
@@ -102,11 +92,6 @@ class PolicyViewController: UIViewController {
         textPolicy7.translatesAutoresizingMaskIntoConstraints = false
         textPolicy8.translatesAutoresizingMaskIntoConstraints = false
         textPolicy9.translatesAutoresizingMaskIntoConstraints = false
-        textPolicy10.translatesAutoresizingMaskIntoConstraints = false
-        textPolicy11.translatesAutoresizingMaskIntoConstraints = false
-        textPolicy12.translatesAutoresizingMaskIntoConstraints = false
-        textPolicy13.translatesAutoresizingMaskIntoConstraints = false
-        textPolicy14.translatesAutoresizingMaskIntoConstraints = false
 
         setupConstraintForText()
     }
@@ -122,11 +107,6 @@ class PolicyViewController: UIViewController {
         contentPolicy.addSubview(textPolicy7)
         contentPolicy.addSubview(textPolicy8)
         contentPolicy.addSubview(textPolicy9)
-        contentPolicy.addSubview(textPolicy10)
-        contentPolicy.addSubview(textPolicy11)
-        contentPolicy.addSubview(textPolicy12)
-        contentPolicy.addSubview(textPolicy13)
-        contentPolicy.addSubview(textPolicy14)
     }
     
     private func configurateTextPolicy1() {
@@ -171,85 +151,75 @@ class PolicyViewController: UIViewController {
     }
     
     private func configurateTextPolicy4() {
-        textPolicy4.text = "2. Использование информации"
-        textPolicy4.font = UIFont(name: "ALSSirius-Bold", size: 20)
+        let titleText3 = "2. Использование информации\n"
+        let bodyText3 = "Собранная нами информация используется исключительно для целей обеспечения функционирования приложения и улучшения его качества. Мы можем использовать вашу персональную информацию для следующих целей:  • Предоставление доступа к функциям приложения и выполнение ваших запросов.  • Улучшение работы и обновление приложения для повышения удобства пользования и безопасности.  • Обеспечение безопасности и защиты правилами и политиками.  • Предоставление персонализированных услуг и рекомендаций. \n"
+        
+        let attributedString3 = NSMutableAttributedString(string: titleText3, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 20) ?? 20])
+        attributedString3.append(NSAttributedString(string: bodyText3, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textPolicy4.attributedText = attributedString3
         textPolicy4.numberOfLines = 0
         textPolicy4.textColor = UIColor.black
     }
     
     private func configurateTextPolicy5() {
-        textPolicy5.text = "Собранная нами информация используется исключительно для целей обеспечения функционирования приложения и улучшения его качества. Мы можем использовать вашу персональную информацию для следующих целей:  • Предоставление доступа к функциям приложения и выполнение ваших запросов.  • Улучшение работы и обновление приложения для повышения удобства пользования и безопасности.  • Обеспечение безопасности и защиты правилами и политиками.  • Предоставление персонализированных услуг и рекомендаций. \n"
-        textPolicy5.font = UIFont(name: "ALSSirius-Regular", size: 16)
+        let titleText4 = "3. Разглашение информации\n"
+        let bodyText4 = "Мы строго соблюдаем принципы конфиденциальности и не передаем вашу личную информацию третьим лицам без вашего согласия, за исключением случаев, предусмотренных законодательством. \n"
+        
+        let attributedString4 = NSMutableAttributedString(string: titleText4, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 20) ?? 20])
+        attributedString4.append(NSAttributedString(string: bodyText4, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textPolicy5.attributedText = attributedString4
         textPolicy5.numberOfLines = 0
         textPolicy5.textColor = UIColor.black
     }
     
     private func configurateTextPolicy6() {
-        textPolicy6.text = "3. Разглашение информации"
-        textPolicy6.font = UIFont(name: "ALSSirius-Bold", size: 20)
+        let titleText5 = "4. Безопасность данных\n"
+        let bodyText5 = "Мы принимаем меры по обеспечению безопасности ваших данных, в том числе шифрование информации и регулярное обновление мер защиты. Однако следует помнить, что ни один метод передачи данных через интернет или хранения данных не является абсолютно безопасным. \n"
+        
+        let attributedString5 = NSMutableAttributedString(string: titleText5, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 20) ?? 20])
+        attributedString5.append(NSAttributedString(string: bodyText5, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textPolicy6.attributedText = attributedString5
         textPolicy6.numberOfLines = 0
         textPolicy6.textColor = UIColor.black
     }
     
     private func configurateTextPolicy7() {
-        textPolicy7.text = "Мы строго соблюдаем принципы конфиденциальности и не передаем вашу личную информацию третьим лицам без вашего согласия, за исключением случаев, предусмотренных законодательством. \n"
-        textPolicy7.font = UIFont(name: "ALSSirius-Regular", size: 16)
+        let titleText6 = "5. Ваше согласие\n"
+        let bodyText6 = "Используя наше приложение, вы соглашаетесь с условиями нашей Политики конфиденциальности. Если вы не согласны с этими условиями, пожалуйста, прекратите использование приложения. \n"
+        
+        let attributedString6 = NSMutableAttributedString(string: titleText6, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 20) ?? 20])
+        attributedString6.append(NSAttributedString(string: bodyText6, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textPolicy7.attributedText = attributedString6
         textPolicy7.numberOfLines = 0
         textPolicy7.textColor = UIColor.black
     }
     
     private func configurateTextPolicy8() {
-        textPolicy8.text = "4. Безопасность данных"
-        textPolicy8.font = UIFont(name: "ALSSirius-Bold", size: 20)
+        let titleText7 = "6. Изменения в политике\n"
+        let bodyText7 = "Мы оставляем за собой право периодически вносить изменения в нашу Политику конфиденциальности. Любые изменения будут опубликованы здесь, поэтому рекомендуем периодически проверять эту страницу на обновления. \n"
+        
+        let attributedString7 = NSMutableAttributedString(string: titleText7, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 20) ?? 20])
+        attributedString7.append(NSAttributedString(string: bodyText7, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
+        
+        textPolicy8.attributedText = attributedString7
         textPolicy8.numberOfLines = 0
         textPolicy8.textColor = UIColor.black
     }
     
     private func configurateTextPolicy9() {
-        textPolicy9.text = "Мы принимаем меры по обеспечению безопасности ваших данных, в том числе шифрование информации и регулярное обновление мер защиты. Однако следует помнить, что ни один метод передачи данных через интернет или хранения данных не является абсолютно безопасным. \n"
-        textPolicy9.font = UIFont(name: "ALSSirius-Regular", size: 16)
+        let bodyText8 = "Свяжитесь с нами: [https://t.me/cideSui1] \n"
+        let titleText8 = "Последнее обновление: [20.04]"
+        
+        let attributedString8 = NSMutableAttributedString(string: bodyText8, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16])
+        attributedString8.append(NSAttributedString(string: titleText8, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 16) ?? 16]))
+        
+        textPolicy9.attributedText = attributedString8
         textPolicy9.numberOfLines = 0
         textPolicy9.textColor = UIColor.black
-    }
-    
-    private func configurateTextPolicy10() {
-        textPolicy10.text = "5. Ваше согласие"
-        textPolicy10.font = UIFont(name: "ALSSirius-Bold", size: 20)
-        textPolicy10.numberOfLines = 0
-        textPolicy10.textColor = UIColor.black
-    }
-    
-    private func configurateTextPolicy11() {
-        textPolicy11.text = "Используя наше приложение, вы соглашаетесь с условиями нашей Политики конфиденциальности. Если вы не согласны с этими условиями, пожалуйста, прекратите использование приложения. \n"
-        textPolicy11.font = UIFont(name: "ALSSirius-Regular", size: 16)
-        textPolicy11.numberOfLines = 0
-        textPolicy11.textColor = UIColor.black
-    }
-    
-    private func configurateTextPolicy12() {
-        textPolicy12.text = "6. Изменения в политике"
-        textPolicy12.font = UIFont(name: "ALSSirius-Bold", size: 20)
-        textPolicy12.numberOfLines = 0
-        textPolicy12.textColor = UIColor.black
-    }
-    
-    private func configurateTextPolicy13() {
-        textPolicy13.text = "Мы оставляем за собой право периодически вносить изменения в нашу Политику конфиденциальности. Любые изменения будут опубликованы здесь, поэтому рекомендуем периодически проверять эту страницу на обновления. \n"
-        textPolicy13.font = UIFont(name: "ALSSirius-Regular", size: 16)
-        textPolicy13.numberOfLines = 0
-        textPolicy13.textColor = UIColor.black
-    }
-    
-    private func configurateTextPolicy14() {
-        let bodyText3 = "Свяжитесь с нами: [https://t.me/cideSui1] \n"
-        let titleText3 = "Последнее обновление: [20.04]"
-        
-        let attributedString3 = NSMutableAttributedString(string: bodyText3, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16])
-        attributedString3.append(NSAttributedString(string: titleText3, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 16) ?? 16]))
-        
-        textPolicy14.attributedText = attributedString3
-        textPolicy14.numberOfLines = 0
-        textPolicy14.textColor = UIColor.black
     }
     
     private func setupConstraintForText() {
@@ -301,34 +271,9 @@ class PolicyViewController: UIViewController {
             
             textPolicy9.topAnchor.constraint(equalTo: textPolicy8.bottomAnchor, constant: 0),
             textPolicy9.widthAnchor.constraint(equalTo: contentPolicy.widthAnchor),
+            textPolicy9.bottomAnchor.constraint(equalTo: contentPolicy.bottomAnchor),
             textPolicy9.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor),
             textPolicy9.trailingAnchor.constraint(equalTo: contentPolicy.trailingAnchor),
-            
-            textPolicy10.topAnchor.constraint(equalTo: textPolicy9.bottomAnchor, constant: 0),
-            textPolicy10.widthAnchor.constraint(equalTo: contentPolicy.widthAnchor),
-            textPolicy10.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor),
-            textPolicy10.trailingAnchor.constraint(equalTo: contentPolicy.trailingAnchor),
-            
-            textPolicy11.topAnchor.constraint(equalTo: textPolicy10.bottomAnchor, constant: 0),
-            textPolicy11.widthAnchor.constraint(equalTo: contentPolicy.widthAnchor),
-            textPolicy11.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor),
-            textPolicy11.trailingAnchor.constraint(equalTo: contentPolicy.trailingAnchor),
-            
-            textPolicy12.topAnchor.constraint(equalTo: textPolicy11.bottomAnchor, constant: 0),
-            textPolicy12.widthAnchor.constraint(equalTo: contentPolicy.widthAnchor),
-            textPolicy12.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor),
-            textPolicy12.trailingAnchor.constraint(equalTo: contentPolicy.trailingAnchor),
-            
-            textPolicy13.topAnchor.constraint(equalTo: textPolicy12.bottomAnchor, constant: 0),
-            textPolicy13.widthAnchor.constraint(equalTo: contentPolicy.widthAnchor),
-            textPolicy13.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor),
-            textPolicy13.trailingAnchor.constraint(equalTo: contentPolicy.trailingAnchor),
-            
-            textPolicy14.topAnchor.constraint(equalTo: textPolicy13.bottomAnchor, constant: 0),
-            textPolicy14.widthAnchor.constraint(equalTo: contentPolicy.widthAnchor),
-            textPolicy14.bottomAnchor.constraint(equalTo: contentPolicy.bottomAnchor),
-            textPolicy14.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor),
-            textPolicy14.trailingAnchor.constraint(equalTo: contentPolicy.trailingAnchor),
         ])
     }
     
