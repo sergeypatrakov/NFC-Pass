@@ -20,7 +20,7 @@ class PolicyViewController: UIViewController {
     private lazy var textPolicy6 = UILabel()
     private lazy var textPolicy7 = UILabel()
     private lazy var textPolicy8 = UILabel()
-    private lazy var textPolicy9 = UILabel()
+    private lazy var textPolicy9 = UITextView()
 
     private lazy var backButton = UIButton()
     
@@ -218,8 +218,12 @@ class PolicyViewController: UIViewController {
         attributedString8.append(NSAttributedString(string: titleText8, attributes: [.font: UIFont(name: "ALSSirius-Bold", size: 16) ?? 16]))
         
         textPolicy9.attributedText = attributedString8
-        textPolicy9.numberOfLines = 0
         textPolicy9.textColor = UIColor.black
+        
+        textPolicy9.isScrollEnabled = false
+        textPolicy9.isSelectable = true
+        textPolicy9.dataDetectorTypes = .link
+        textPolicy9.isEditable = false
     }
     
     private func setupConstraintForText() {
@@ -272,7 +276,7 @@ class PolicyViewController: UIViewController {
             textPolicy9.topAnchor.constraint(equalTo: textPolicy8.bottomAnchor, constant: 0),
             textPolicy9.widthAnchor.constraint(equalTo: contentPolicy.widthAnchor),
             textPolicy9.bottomAnchor.constraint(equalTo: contentPolicy.bottomAnchor),
-            textPolicy9.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor),
+            textPolicy9.leadingAnchor.constraint(equalTo: contentPolicy.leadingAnchor, constant: -5),
             textPolicy9.trailingAnchor.constraint(equalTo: contentPolicy.trailingAnchor),
         ])
     }

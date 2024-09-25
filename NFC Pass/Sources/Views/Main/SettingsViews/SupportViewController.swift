@@ -18,7 +18,7 @@ class SupportViewController: UIViewController {
     private lazy var textSupport5 = UILabel()
     private lazy var textSupport6 = UILabel()
     private lazy var textSupport7 = UILabel()
-    private lazy var textSupport8 = UILabel()
+    private lazy var textSupport8 = UITextView()
     private lazy var textSupport9 = UILabel()
     private lazy var textSupport10 = UILabel()
 
@@ -163,8 +163,12 @@ class SupportViewController: UIViewController {
         attributedString5.append(NSAttributedString(string: bodyText5, attributes: [.font: UIFont(name: "ALSSirius-Regular", size: 16) ?? 16]))
 
         textSupport8.attributedText = attributedString5
-        textSupport8.numberOfLines = 0
         textSupport8.textColor = UIColor.black
+        
+        textSupport8.isScrollEnabled = false
+        textSupport8.isSelectable = true
+        textSupport8.dataDetectorTypes = .link
+        textSupport8.isEditable = false
     }
     
     private func configurateTextSupport9() {
@@ -232,7 +236,7 @@ class SupportViewController: UIViewController {
             
             textSupport8.topAnchor.constraint(equalTo: textSupport7.bottomAnchor, constant: 0),
             textSupport8.widthAnchor.constraint(equalTo: contentSupport.widthAnchor),
-            textSupport8.leadingAnchor.constraint(equalTo: contentSupport.leadingAnchor),
+            textSupport8.leadingAnchor.constraint(equalTo: contentSupport.leadingAnchor, constant: -5),
             textSupport8.trailingAnchor.constraint(equalTo: contentSupport.trailingAnchor),
             
             textSupport9.topAnchor.constraint(equalTo: textSupport8.bottomAnchor, constant: 0),
