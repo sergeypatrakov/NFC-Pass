@@ -286,7 +286,23 @@ class SettingsViewController: UIViewController {
         button.setTitle("Выйти из аккаунта", for: .normal)
         button.backgroundColor = UIColor.redSoft
         button.setTitleColor(UIColor.red, for: .normal)
-//        button.addTarget(self, action: #selector(pushButtonAction), for: .touchUpInside)
+        
+        button.addTarget(self, action: #selector(logoutButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func logoutButtonPressed() {
+        let alert = UIAlertController(title: "Вы точно хотите выйти?", message: "Это действие будет невозможно отменить. Придется заходить в аккаунт снова.", preferredStyle: .alert)
+        
+        let logoutAction = UIAlertAction(title: "Выйти", style: .destructive) { _ in
+            print("Пользователь вышел из аккаунта.")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Вернуться", style: .cancel, handler: nil)
+        
+        alert.addAction(logoutAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func goToBack() {
