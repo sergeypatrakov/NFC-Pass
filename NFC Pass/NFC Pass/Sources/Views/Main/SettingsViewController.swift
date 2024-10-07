@@ -31,7 +31,7 @@ class SettingsViewController: UIViewController {
     private lazy var policyButton = UIButton()
     
     private lazy var backButton = UIButton()
-    private lazy var button = UIButton()
+    private lazy var exitButton = UnderButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,6 @@ class SettingsViewController: UIViewController {
         configurateArrowPolicy()
         configuratePolicyButton()
         configurateBackButton()
-        configurateButton()
         configurateExitButton()
     }
     
@@ -283,10 +282,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func configurateExitButton() {
-        button.setTitle("Выйти из аккаунта", for: .normal)
-        button.backgroundColor = UIColor.redSoft
-        button.setTitleColor(UIColor.red, for: .normal)
-        
+        let button = exitButton.placeButton(view: view, text: "Выйти из аккаунта", color: UIColor.redSoft, textColor: UIColor.red)
         button.addTarget(self, action: #selector(logoutButtonPressed), for: .touchUpInside)
     }
     
@@ -297,7 +293,7 @@ class SettingsViewController: UIViewController {
             print("Пользователь вышел из аккаунта.")
         }
         
-        let cancelAction = UIAlertAction(title: "Вернуться", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
         
         alert.addAction(logoutAction)
         alert.addAction(cancelAction)
@@ -322,22 +318,5 @@ class SettingsViewController: UIViewController {
     @objc func goToPolicy() {
         let controller = PolicyViewController()
         navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-extension SettingsViewController {
-    func configurateButton() {
-        view.addSubview(button)
-        button.layer.cornerRadius = 20
-        if let alsSiriusBold = UIFont(name: "ALSSirius-Bold", size: 16) {
-            button.titleLabel?.font = alsSiriusBold
-        }
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.widthAnchor.constraint(equalToConstant: 350),
-            button.heightAnchor.constraint(equalToConstant: 55)
-        ])
     }
 }

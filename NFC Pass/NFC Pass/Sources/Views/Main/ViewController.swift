@@ -8,12 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    private lazy var button = UnderButton()
     private lazy var image = UIImageView()
     private lazy var logo = UIImageView()
     private lazy var backgroundColor = UIView()
     private lazy var text = UILabel()
-    lazy var button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         configurateImage()
         configarateText()
         configurateButton()
-        buttonMain()
     }
     
     private func configurateLogo() {
@@ -82,33 +81,14 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func buttonMain() {
-        button.setTitle("Войти в систему", for: .normal)
-        button.backgroundColor = UIColor.white
-        button.setTitleColor(UIColor.accent, for: .normal)
+    func configurateButton() {
+        let button = button.placeButton(view: view, text: "Войти в систему", color: UIColor.white, textColor: UIColor.accent)
         button.addTarget(self, action: #selector(pushButtonAction), for: .touchUpInside)
     }
     
     @objc func pushButtonAction() {
-        let controller = MainDefaultViewController()
+        let controller = MainViewController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
-}
-
-extension ViewController {
-    func configurateButton() {
-        view.addSubview(button)
-        button.layer.cornerRadius = 20
-        if let alsSiriusBold = UIFont(name: "ALSSirius-Bold", size: 16) {
-            button.titleLabel?.font = alsSiriusBold
-        }
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.widthAnchor.constraint(equalToConstant: 350),
-            button.heightAnchor.constraint(equalToConstant: 55)
-        ])
-    }
 }
