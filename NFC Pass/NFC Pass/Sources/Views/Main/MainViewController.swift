@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainDefaultViewController: UIViewController {
+class MainViewController: UIViewController {
     
     private lazy var logo = UIImageView()
     private lazy var label = UILabel()
@@ -21,13 +21,13 @@ class MainDefaultViewController: UIViewController {
     private lazy var circleWhiteMedium = UIView()
     private lazy var circleWhiteSmall = UIView()
     
-    private lazy var cancelButton = UIButton()
-    private lazy var button = UIButton()
+    private lazy var cancelButton = UnderButton()
+    private lazy var activeButton = UnderButton()
     private lazy var settings = UIButton()
     
     override func viewWillAppear(_ animated: Bool) { // delete "NavigationBar" button
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
@@ -42,7 +42,6 @@ class MainDefaultViewController: UIViewController {
         configurateCircles()
         configuratekeyImage()
         configurateText()
-        configurateButton()
         buttonDefault()
         buttonCancelled()
     }
@@ -184,27 +183,39 @@ class MainDefaultViewController: UIViewController {
         ])
     }
     
-    private func buttonDefault() {
-        button.setTitle("Активировать пропуск", for: .normal)
-        button.backgroundColor = UIColor.accent
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(activatePass), for: .touchUpInside)
+    func buttonDefault() {
+        view.addSubview(activeButton)
+        activeButton.layer.cornerRadius = 20
+        activeButton.titleLabel?.font = UIFont(name: "ALSSirius-Bold", size: 16)
+        activeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            activeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activeButton.widthAnchor.constraint(equalToConstant: 350),
+            activeButton.heightAnchor.constraint(equalToConstant: 55)
+        ])
+        
+        activeButton.setTitle("Активировать пропуск", for: .normal)
+        activeButton.backgroundColor = UIColor.accent
+        activeButton.setTitleColor(UIColor.white, for: .normal)
+        activeButton.addTarget(self, action: #selector(activatePass), for: .touchUpInside)
     }
     
     private func buttonCancelled() {
         cancelButton.setTitle("Отмена", for: .normal)
-        if let alsSiriusBold = UIFont(name: "ALSSirius-Bold", size: 16) {
-            cancelButton.titleLabel?.font = alsSiriusBold
-        } else { print("Font is not exists") }
+        cancelButton.titleLabel?.font = UIFont(name: "ALSSirius-Bold", size: 16)
         view.addSubview(cancelButton)
         cancelButton.layer.cornerRadius = 20
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             cancelButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cancelButton.widthAnchor.constraint(equalToConstant: 350),
             cancelButton.heightAnchor.constraint(equalToConstant: 55)
         ])
+        
         cancelButton.backgroundColor = UIColor.accentShade
         cancelButton.setTitleColor(UIColor.black, for: .normal)
         cancelButton.isHidden = true
@@ -221,7 +232,7 @@ class MainDefaultViewController: UIViewController {
         keyImage.image = UIImage(named: "keyOpened")
         
         cancelButton.isHidden = false
-        button.isHidden = true
+        activeButton.isHidden = true
         
         circleShadeBig.backgroundColor = UIColor.accent
         circleShadeMedium.backgroundColor = UIColor.accent
@@ -232,7 +243,7 @@ class MainDefaultViewController: UIViewController {
         text.text = "NFC: выключен"
         keyImage.image = UIImage(named: "keyLocked")
         
-        button.isHidden = false
+        activeButton.isHidden = false
         cancelButton.isHidden = true
         
         circleShadeBig.backgroundColor = UIColor.shade2
@@ -240,38 +251,4 @@ class MainDefaultViewController: UIViewController {
         circleShadeSmall.backgroundColor = UIColor.shade2
     }
     
-}
-
-extension MainDefaultViewController {
-    
-    func configurateButton() {
-        view.addSubview(button)
-        button.layer.cornerRadius = 20
-        if let alsSiriusBold = UIFont(name: "ALSSirius-Bold", size: 16) {
-            button.titleLabel?.font = alsSiriusBold
-        } else {
-            print("Font is not exists")
-        }
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.widthAnchor.constraint(equalToConstant: 350),
-            button.heightAnchor.constraint(equalToConstant: 55)
-        ])
-    }
-    
-    func createShadeCirclesView() -> UIView {
-        let circleView = UIView()
-        circleView.backgroundColor = UIColor.shade2
-        circleView.translatesAutoresizingMaskIntoConstraints = false
-        return circleView
-    }
-    
-    func createWhiteCirclesView() -> UIView {
-        let circleView = UIView()
-        circleView.backgroundColor = UIColor.white
-        circleView.translatesAutoresizingMaskIntoConstraints = false
-        return circleView
-    }
 }
